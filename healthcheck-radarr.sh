@@ -1,0 +1,46 @@
+#! /bin/sh
+
+server_address=$(grep "<BindAddress>.*</BindAddress>" /config/config.xml | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
+if [ "$server_address" = "*" ]
+then
+    server_address="localhost"
+fi
+
+server_port=$(grep "<Port>.*</Port>" /config/config.xml | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
+api_key=$(grep "<ApiKey>.*</ApiKey>" /config/config.xml | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
+url_base=$(grep "<UrlBase>.*</UrlBase>" /config/config.xml | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
+echo $url_base
+if [ -n "$url_base" ]
+then
+    url_base="$url_base/"
+fi
+
+url="http://${server_address}:${server_port}/${url_base}api/system/status?apikey=${api_key}"
+
+ssl_enabled=$(grep "<EnableSsl>.*</EnableSsl>" /config/config.xml | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
+if [ "$ssl_enabled" = "True" ]
+then
+    ssl_server_port=$(grep "<SslPort>.*</SslPort>" /config/config.xml | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
+    ssl_url="https://${server_address}:${server_port}/${url_base}api/system/status?apikey=${api_key}"
+fi
+
+if curl --silent --show-error -f $url
+then
+    if [ "$ssl_enabled" = "True" ]
+    then
+        if curl --silent --show-error -f $ssl_url
+        then
+            # both http and https are healthy
+            exit 0
+        else
+            # https unhealthy
+            exit 1
+        fi
+    else
+        # http healthy, no https
+        exit 0
+    fi
+else
+    # http unhealthy
+    exit 1
+fi
