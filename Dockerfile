@@ -12,9 +12,15 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 # Install sickbeard_mp4_automator package dependencies
 RUN apk -U upgrade --no-cache && \
     apk -U add --no-cache \
-        ffmpeg \
-        git \
-        py3-pip && \
+    ffmpeg \
+    gcc \
+    git \
+    libffi \
+    libffi-dev \
+    musl-dev \
+    openssl-dev \
+    python3-dev \
+    py3-pip && \
     pip install --upgrade pip && \
     ln /usr/bin/python3 /usr/bin/python
 
