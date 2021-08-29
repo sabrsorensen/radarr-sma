@@ -1,5 +1,5 @@
 #!/bin/bash
-
+docker pull hotio/radarr:musl
 docker buildx build \
     --platform ${ARCHITECTURE//-/\/} \
     --output "type=image,push=true" \

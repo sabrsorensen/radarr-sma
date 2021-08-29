@@ -1,4 +1,5 @@
 #!/bin/bash
+docker pull hotio/radarr:musl
 TAG=${GITHUB_REF//refs\/pull\//PR}
 TAG=${TAG//\/merge/}
 docker buildx build \
