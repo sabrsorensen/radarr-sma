@@ -9,5 +9,5 @@ docker buildx build \
     --build-arg VCS_REF="${GITHUB_SHA}" \
     --build-arg VCS_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
     --build-arg SMA_REF=`curl -sX GET "https://api.github.com/repos/mdhiggins/sickbeard_mp4_automator/commits/master" | jq '.sha' | tr -d '"'` \
-    --build-arg BASE_REF=`docker inspect hotio/radarr:musl --format '{{ index .Config.Labels "org.opencontainers.image.revision"}}'` \
+    --build-arg BASE_REF=`docker pull hotio/radarr:musl; docker inspect hotio/radarr:musl --format '{{ index .Config.Labels "org.opencontainers.image.revision"}}'` \
     --file ./Dockerfile ./

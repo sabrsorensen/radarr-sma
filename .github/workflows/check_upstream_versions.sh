@@ -1,5 +1,8 @@
 #!/bin/bash
 
+docker pull ghcr.io/$GITHUB_REPOSITORY
+docker pull hotio/radarr:musl
+
 image_baseimage=`docker inspect ghcr.io/$GITHUB_REPOSITORY --format '{{ index .Config.Labels "org.opencontainers.image.base.digest"}}'`
 image_sma_ref=`docker inspect ghcr.io/$GITHUB_REPOSITORY --format '{{ index .Config.Labels "sma_revision"}}'`
 
