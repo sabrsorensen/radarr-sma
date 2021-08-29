@@ -1,7 +1,7 @@
 #!/bin/bash
 
-image_baseimage=`docker inspect $GITHUB_REPOSITORY --format '{{ index .Config.Labels "org.opencontainers.image.base.digest"}}'`
-image_sma_ref=`docker inspect $GITHUB_REPOSITORY --format '{{ index .Config.Labels "sma_revision"}}'`
+image_baseimage=`docker inspect ghcr.io/$GITHUB_REPOSITORY --format '{{ index .Config.Labels "org.opencontainers.image.base.digest"}}'`
+image_sma_ref=`docker inspect ghcr.io/$GITHUB_REPOSITORY --format '{{ index .Config.Labels "sma_revision"}}'`
 
 current_baseimage_ref=`docker inspect hotio/radarr:musl --format '{{ index .Config.Labels "org.opencontainers.image.revision"}}'`
 current_sma_ref=`curl -sX GET "https://api.github.com/repos/mdhiggins/sickbeard_mp4_automator/commits/master" | jq '.sha' | tr -d '"'`
