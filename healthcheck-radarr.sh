@@ -16,13 +16,13 @@ then
     url_base="$url_base/"
 fi
 
-url="http://${server_address}:${server_port}/${url_base}api/system/status?apikey=${api_key}"
+url="http://${server_address}:${server_port}/${url_base}api/v3/health?apikey=${api_key}"
 
 ssl_enabled=$(grep "<EnableSsl>.*</EnableSsl>" $config_path | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
 if [ "$ssl_enabled" = "True" ]
 then
     ssl_server_port=$(grep "<SslPort>.*</SslPort>" $config_path | awk -F '>' '{print $2}' | awk -F '<' '{print $1}')
-    ssl_url="https://${server_address}:${server_port}/${url_base}api/system/status?apikey=${api_key}"
+    ssl_url="https://${server_address}:${server_port}/${url_base}api/v3/health?apikey=${api_key}"
 fi
 
 if curl --silent --show-error -f $url
