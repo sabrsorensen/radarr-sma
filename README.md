@@ -1,9 +1,7 @@
 # radarr-aphrodite-sma
 
 ![Image OS](https://img.shields.io/badge/Image_OS-Alpine-blue)
-[![Base Image](https://img.shields.io/badge/Base_Image-hotio/radarr:musl-yellow)](https://hub.docker.com/r/hotio/radarr)
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sabrsorensen/radarr-aphrodite-sma)
-[![Docker Pulls](https://img.shields.io/docker/pulls/sabrsorensen/radarr-aphrodite-sma)](https://hub.docker.com/r/sabrsorensen/radarr-aphrodite-sma)
+[![Base Image](https://img.shields.io/badge/Base_Image-ghcr.io/hotio/radarr:musl-yellow)](https://ghcr.io/hotio/radarr)
 
 ## Upstream Projects
 
