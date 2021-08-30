@@ -1,4 +1,4 @@
-# radarr-aphrodite-sma
+# radarr-sma
 
 ![Image OS](https://img.shields.io/badge/Image_OS-Alpine-blue)
 [![Base Image](https://img.shields.io/badge/Base_Image-ghcr.io/hotio/radarr:musl-yellow)](https://ghcr.io/hotio/radarr)
@@ -18,7 +18,7 @@ docker run --rm --name radarr \
     -v /docker/host/configs/sickbeard_mp4_automator/config:/opt/sma/config \
     -v /docker/host/configs/sickbeard_mp4_automator/post_process:/opt/sma/post_process \
     -v /docker/host/media:/data \
-    ghcr.io/sabrsorensen/radarr-aphrodite-sma
+    ghcr.io/sabrsorensen/radarr-sma
 ```
 
 From [hotio/radarr's documentation](https://github.com/hotio/docker-radarr/blob/master/README.md#starting-the-container):
@@ -38,7 +38,7 @@ The environment variables below are all optional, the values you see are the def
 ```yaml
 radarr:
   ...
-  image: ghcr.io/sabrsorensen/radarr-aphrodite-sma
+  image: ghcr.io/sabrsorensen/radarr-sma
   container_name: radarr
   environment:
     - PUID=1000
