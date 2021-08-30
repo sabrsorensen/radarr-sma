@@ -1,4 +1,4 @@
-FROM hotio/radarr:musl
+FROM ghcr.io/hotio/radarr:musl
 LABEL maintainer=825813+sabrsorensen@users.noreply.github.com
 
 ARG BUILD_DATE
