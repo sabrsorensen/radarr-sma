@@ -27,7 +27,7 @@ RUN apk -U upgrade --no-cache && \
     openssl-dev \
     python3-dev \
     py3-pip && \
-    pip install --upgrade pip && \
+    pip install --no-cache-dir --upgrade pip && \
     ln /usr/bin/python3 /usr/bin/python
 
 # clone sickbeard_mp4_automator and install Python module dependencies
