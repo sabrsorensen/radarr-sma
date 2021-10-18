@@ -1,7 +1,7 @@
 # radarr-sma
 
 ![Image OS](https://img.shields.io/badge/Image_OS-Alpine-blue)
-[![Base Image](https://img.shields.io/badge/Base_Image-ghcr.io/hotio/radarr:musl-yellow)](https://ghcr.io/hotio/radarr)
+[![Base Image](https://img.shields.io/badge/Base_Image-ghcr.io/hotio/radarr:release-yellow)](https://ghcr.io/hotio/radarr)
 
 ## Upstream Projects
 
