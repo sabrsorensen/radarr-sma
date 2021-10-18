@@ -1,12 +1,14 @@
 #!/bin/bash
 
+baseimage="ghcr.io/hotio/radarr:release"
+
 docker pull ghcr.io/$GITHUB_REPOSITORY
-docker pull ghcr.io/hotio/radarr:musl
+docker pull $baseimage
 
 image_baseimage=`docker inspect ghcr.io/$GITHUB_REPOSITORY --format '{{ index .Config.Labels "base_image_revision"}}'`
 image_sma_ref=`docker inspect ghcr.io/$GITHUB_REPOSITORY --format '{{ index .Config.Labels "sma_revision"}}'`
 
-current_baseimage_ref=`docker inspect ghcr.io/hotio/radarr:musl --format '{{ index .Config.Labels "org.opencontainers.image.revision"}}'`
+current_baseimage_ref=`docker inspect $baseimage --format '{{ index .Config.Labels "org.opencontainers.image.revision"}}'`
 current_sma_ref=`curl -sX GET "https://api.github.com/repos/mdhiggins/sickbeard_mp4_automator/commits/master" | jq '.sha' | tr -d '"'`
 
 
